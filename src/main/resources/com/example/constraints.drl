@@ -40,3 +40,7 @@ rule "If not planned, White third"
         scoreHolder.addSoftConstraintMatch(kcontext, -30);
 end
 
+// comment 1 of the 3 "If not planned *" rules, it will work correctly
+// or
+// change comma(,) to &&, it will work correctly
+
