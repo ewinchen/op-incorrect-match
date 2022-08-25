@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver xmlns="https://www.optaplanner.org/xsd/solver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="https://www.optaplanner.org/xsd/solver https://www.optaplanner.org/xsd/solver/solver.xsd">
+
+    <!--<environmentMode>FULL_ASSERT</environmentMode>-->
+    <moveThreadCount>AUTO</moveThreadCount>
+
+    <solutionClass>com.example.domain.Solution</solutionClass>
+    <entityClass>com.example.domain.Task</entityClass>
+
+    <scoreDirectorFactory>
+        <scoreDrl>com/example/constraints.drl</scoreDrl>
+        <initializingScoreTrend>ONLY_DOWN</initializingScoreTrend>
+    </scoreDirectorFactory>
+
+    <constructionHeuristic>
+        <constructionHeuristicType>FIRST_FIT</constructionHeuristicType>
+    </constructionHeuristic>
+
+    <localSearch>
+        <termination>
+            <secondsSpentLimit>10</secondsSpentLimit>
+        </termination>
+        <localSearchType>HILL_CLIMBING</localSearchType>
+    </localSearch>
+
+    <!--Tabu search-->
+    <!--<localSearch>-->
+    <!--    <termination>-->
+    <!--        <secondsSpentLimit>10</secondsSpentLimit>-->
+    <!--    </termination>-->
+    <!--    <localSearchType>TABU_SEARCH</localSearchType>-->
+    <!--</localSearch>-->
+
+
+
+</solver>

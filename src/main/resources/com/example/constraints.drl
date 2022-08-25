@@ -1,0 +1,42 @@
+package com.example;
+    dialect "java"
+import org.optaplanner.core.api.score.buildin.hardmediumsoft.HardMediumSoftScoreHolder;
+
+import java.util.List;
+import java.util.Set;
+import java.math.BigDecimal;
+
+import com.example.domain.Solution;
+import com.example.domain.Task;
+
+
+global HardMediumSoftScoreHolder scoreHolder;
+
+rule "All planned"
+    when
+        Task(produceType == 2)
+    then
+        scoreHolder.addMediumConstraintMatch(kcontext, -10);
+end
+
+rule "If not planned, Dark fisrt"
+    when
+        Task(produceType == 2, artColorDegree == "Dark")
+    then
+        scoreHolder.addSoftConstraintMatch(kcontext, -10);
+end
+
+rule "If not planned, Light second"
+    when
+        Task(produceType == 2, artColorDegree == "Light")
+    then
+        scoreHolder.addSoftConstraintMatch(kcontext, -20);
+end
+
+rule "If not planned, White third"
+    when
+        Task(produceType == 2, artColorDegree == "White")
+    then
+        scoreHolder.addSoftConstraintMatch(kcontext, -30);
+end
+
